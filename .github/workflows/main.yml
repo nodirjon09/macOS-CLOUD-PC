@@ -1,0 +1,26 @@
+name: macOS Cloud PC
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Kodni yuklash
+        uses: actions/checkout@v4
+
+      - name: Homebrew yangilash
+        run: brew update
+
+      - name: Python o‘rnatish
+        run: brew install python3
+
+      - name: O'rnatilgan versiyalarni tekshirish
+        run: |
+          python3 --version
+          brew --version
